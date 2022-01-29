@@ -1,0 +1,35 @@
+{"intents": [
+        {"tag": "#tracuudiem",
+         "patterns": ["Tra cứu điểm", "Điểm học kỳ vừa rồi", "Điểm thi của tôi", "Điểm xét học vụ", "Điểm của tôi", "Tra điểm" ],
+         "responses": []
+        },
+        {"tag": "#hocphi",
+         "patterns": ["Học phí của tôi", "Tiền học phí", "Học phí", "Học phí bao nhiêu", "Thông tin về học phí", "Học phí kì này", "Tổng học phí"],
+         "responses": []
+        },
+        {"tag": "#lichhochomnay",
+         "patterns": ["Lịch học hôm nay của tôi", "Lịch học hôm nay", "Thông tin lịch học hôm nay", "Lịch học hôm nay của tôi", "Hôm nay học gì"],
+         "responses": []
+        },
+        {"tag": "#lichhoctuan",
+         "patterns": ["Lịch học tuần", "Tuần này học gì", "Lịch học tuần của tôi", "Lịch học tuần này như thế nào","Thông tin lịch học tuần" ],
+         "responses": []
+        },
+        {"tag": "#ketquarenluyen",
+         "patterns": ["Điểm rèn luyện", "Kết quả rèn luyện của tôi","Diểm rèn luyện đạt được", "Kết quả rèn luyện", "Xem điểm rèn luyện"],
+        "responses": []
+        },
+        {"tag": "#ketquahocvu",
+         "patterns": [ "Kết quả học vụ của tôi", "Kết quả học vụ", "Kết quả học vụ đạt được", "Kết quả học vụ như thế nào"],
+        "responses":[]
+        },
+        {"tag": "#chaohoi",
+         "patterns": ["Chào bạn", "Xin chào", "Chào VKU", "Chào buổi sáng"],
+         "responses": ["VKU xin chào bạn!", "Rất vui khi được gặp bạn", "Chúc bạn một ngày tốt lành"]
+        },
+        {"tag": "#tuyensinh",
+         "patterns": ["Thông tin tuyển sinh", "Kế hoạch tuyển sinh 2022", "Tuyển sinh 2022", "Cho tôi biết thêm về thông tin tuyển sinh"],
+         "responses": ["VKU xin gửi đến bạn thông tin tuyển sinh 2022!", "Mời bạn xem thông tin về kế hoạch tuyển sinh 2022 tại đây"]
+        }
+	]
+}
