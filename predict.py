@@ -52,18 +52,18 @@ class Predict:
 
         @app.route("/predict")
         def predict():
-            if(this.init_flag != 1):
-                try:
-                    self.initPredictEngine()
-                except Exception as e:
-                    return json.dumps({"status": "0", "message": "Khởi chạy thất bại!", "detail": str(e)})
+            # if(this.init_flag != 1):
+            #     try:
+            #         self.initPredictEngine()
+            #     except Exception as e:
+            #         return json.dumps({"status": "0", "message": "Khởi chạy thất bại!", "detail": str(e)})
 
             input_data = request.args.get('msg')
             class_name = this.classify(input_data)
             response_content = this.response(input_data)
-            print("Content is: ")
-            print(type(this.response(input_data)))
-            print("End Content")
+            # print("Content is: ")
+            # print(type(this.response(input_data)))
+            # print("End Content")
 
             command = 0
 
@@ -91,7 +91,6 @@ class Predict:
         app.run()
 
     def initPredictEngine(self):
-
         try:
             self.data = pickle.load(open("training_data", "rb"))
             self.words = self.data['words']
@@ -113,8 +112,10 @@ class Predict:
             self.model = tflearn.DNN(self.net, tensorboard_dir='tflearn_logs')
             # load our saved model
             self.model.load('./model.tflearn')
-        except Exception:
+        except Exception as e:
+            print("BREAK: " + str(e))
             return 0
+            self.init_flag = 1
         return 1
 
     def clean_up_sentence(self, sentence):
@@ -134,8 +135,8 @@ class Predict:
             for i,w in enumerate(words):
                 if w == s:
                     bag[i] = 1
-                    if show_details:
-                        print ("found in bag: %s" % w)
+                    # if show_details:
+                        # print ("found in bag: %s" % w)
 
         return(np.array(bag))
 
@@ -147,13 +148,14 @@ class Predict:
         # generate probabilities from the model
         results = self.model.predict([self.bow(sentence, self.words)])[0]
         # filter out predictions below a threshold
-        results = [[i,r] for i,r in enumerate(results) if r> self.ERROR_THRESHOLD]
+        results = [[i,r] for i,r in enumerate(results) if r > self.ERROR_THRESHOLD]
         # sort by strength of probability
         results.sort(key=lambda x: x[1], reverse=True)
         return_list = []
         for r in results:
             return_list.append((self.classes[r[0]], np.float64(r[1])))
         # return tuple of intent and probability
+        print("OK1")
         return return_list
 
     def response(self, sentence, userID='123', show_details=False):
@@ -167,7 +169,7 @@ class Predict:
                     if i['tag'] == results[0][0]:
                         # set context for this intent if necessary
                         if 'context_set' in i:
-                            if show_details: print('context:', i['context_set'])
+                            # if show_details: print('context:', i['context_set'])
                             self.context[userID] = i['context_set']
 
                         # check if this intent is contextual and applies to this user's conversation

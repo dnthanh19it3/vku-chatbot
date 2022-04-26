@@ -4,7 +4,7 @@ def getJson():
         data = json.loads(url.read().decode())
         return data
 
-def testfunc():
-    print((getJson()))
+# def testfunc():
+    # print((getJson()))
 
-testfunc()
+# testfunc()
